@@ -1,0 +1,249 @@
+$market-color : rgb(194, 145, 94);
+$inventory-color : rgb(199, 176, 141);
+$info-bar-color : rgb(235, 162, 22);
+
+$town-color : rgb(42, 102, 46);
+$current-location-color : rgb(42, 84, 102);
+
+$cannon-curve : cubic-bezier(.3,20,.79,20);
+$ship-y-position : 200px;
+$cannon-start : $ship-y-position + 30px;
+$cannon-end : $cannon-start + 10px;
+
+$smoke-curve : cubic-bezier(.3,75,.79,40);
+$color-flash-curve : cubic-bezier(.3,2,.79,2);
+$color-flash-curve2 : cubic-bezier(.3,1,.79,1);
+
+@mixin market-gradient{
+  background: $market-color;
+  background: -webkit-linear-gradient(lighten($market-color, 10%), $market-color);
+  background: -o-linear-gradient(lighten($market-color, 10%), $market-color);
+  background: -moz-linear-gradient(lighten($market-color, 10%), $market-color);
+  background: linear-gradient(lighten($market-color, 10%), $market-color);
+}
+
+@mixin inventory-gradient{
+  background: $inventory-color;
+  background: -webkit-linear-gradient(lighten($inventory-color, 10%), $inventory-color);
+  background: -o-linear-gradient(lighten($inventory-color, 10%), $inventory-color);
+  background: -moz-linear-gradient(lighten($inventory-color, 10%), $inventory-color);
+  background: linear-gradient(lighten($inventory-color, 10%), $inventory-color);
+}
+
+body{
+  padding: 30px;
+  background-color: rgb(228, 240, 235);
+}
+
+.game-screen{
+  text-align: center;
+}
+
+.market{
+  min-width: 1000px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 10px 20px 20px 20px;
+  @include market-gradient;
+  border: 3px solid darken($market-color, 10%);
+  text-align: center;
+}
+
+.market-item{
+  display: inline-block;
+  text-align: center;
+  height: 150px;
+  width: 100px;
+  margin: 0 10px;
+  margin-bottom: 10px;
+  background-color: lighten($market-color, 10%);
+  border: 2px solid lighten($market-color, 15%);
+  box-shadow: 1px 2px 3px darken($market-color, 10%);
+}
+
+.inventory{
+  min-height: 200px;
+  min-width: 1000px;
+  margin: 0 auto;
+  padding: 10px 20px 20px 20px;
+  @include inventory-gradient;
+  border: 3px solid darken($inventory-color, 10%);
+  text-align: center;
+}
+
+.inventory-item{
+  display: inline-block;
+  text-align: center;
+  height: 150px;
+  width: 100px;
+  margin: 0 10px;
+  margin-bottom: 10px;
+  border: 2px solid lighten($inventory-color, 15%);
+  background-color: lighten($inventory-color, 10%);
+  box-shadow: 1px 2px 3px darken($inventory-color, 10%);
+}
+
+.info-bar{
+  height: 30px;
+  min-width: 1000px;
+  margin: 0 auto;
+  padding-top: 20px;
+  background-color: white;
+  text-align: center;
+  span{
+    margin: 10px 50px;
+  }
+}
+
+.gold{
+  transition: box-shadow .1s linear, background-color .1s linear;
+}
+.gold:hover{
+  background-color: gold;
+  box-shadow: 0px 0px 10px gold;
+}
+
+.town-action-bar{
+  padding: 10px;
+  border-bottom: 3px solid darken($market-color, 10%);
+  button{
+    margin: 20px;
+  }
+}
+.fix-ship{
+  margin-right: 50px;
+  button{
+    margin-right: 10px;
+  }
+}
+.ship-yard{
+  margin-bottom: 20px;
+  padding: 10px;
+  border-bottom: 3px solid darken($market-color, 10%);
+}
+.ship-for-sale{
+  display: inline-block;
+  margin: 10px;
+  button{
+    margin: 0 auto;
+  }
+}
+
+.travel-map-wrapper{
+  position: relative;
+  height: 700px;
+  width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.travel-map{
+  width: 100%;
+}
+
+.destination{
+  position: absolute;
+  background-color: lighten($town-color, 50%);
+  color: darken($town-color, 5%);
+  border: 1px solid $town-color;
+  border-radius: 20px;
+  cursor: pointer;
+  &:hover{
+    background-color: lighten($town-color, 30%);
+    color: darken($town-color, 25%);
+    border: 1px solid $town-color;
+  }
+}
+
+#current-location{
+  background-color: lighten($current-location-color, 30%);
+  color: darken($current-location-color, 25%);
+  border: 1px solid $current-location-color;
+  cursor: default;
+  &:hover{
+    background-color: lighten($current-location-color, 30%);
+    color: darken($current-location-color, 25%);
+    border: 1px solid $current-location-color;
+  }
+}
+
+.sea{
+  position: relative;
+  overflow: hidden;
+  height: 700px;
+  width: 1000px;
+  margin: 0 auto;
+  .action-bar{
+    position: absolute;
+    z-index: 1000;
+    bottom: 150px;
+    left: 50px;
+    button{
+      margin-left: 20px;
+    }
+  }
+}
+
+.sea-top{
+  position: relative;
+  margin-bottom: -4px;
+}
+
+.sea-bottom{
+  position: relative;
+  z-index: 100;
+}
+
+.ship{
+  z-index: 30;
+  position: absolute;
+  transition: bottom 1s ease-in, transform 1s ease-in;
+  //border: 1px solid black;
+  .smoke{
+    width: 50px;
+    height: 55px;
+    position: absolute;
+    left: 40%;
+    bottom: 0px;
+    transition: opacity .4s $smoke-curve .4s, transform .4s ease-in .4s;
+  }
+}
+
+.damage-bar{
+  height: 5px;
+  margin-left: 20%;
+  margin-top: -5px;
+  border: 1px solid black;
+  background-color: white;
+  div{
+    height: 5px;
+    background-color: green;
+    transition: width 300ms ease-in;
+  }
+}
+
+
+.cannon{
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: black;
+  transition: left 1s linear 500ms, bottom 1s $cannon-curve 500ms, opacity 10ms linear 1490ms;
+}
+
+
+.player-ship{
+  left: 50px;
+}
+
+.enemy-ship{
+  left: 600px;
+}
+
+.bottom-mask{
+  z-index: 200;
+  width: 100%;
+  height: 200px;
+  background-color: rgb(228, 240, 235);
+}

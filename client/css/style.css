@@ -1,0 +1,236 @@
+body {
+  padding: 30px;
+  background-color: #e4f0eb;
+}
+
+.game-screen {
+  text-align: center;
+}
+
+.market {
+  min-width: 1000px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 10px 20px 20px 20px;
+  background: #c2915e;
+  background: -webkit-linear-gradient(#d0aa83, #c2915e);
+  background: -o-linear-gradient(#d0aa83, #c2915e);
+  background: -moz-linear-gradient(#d0aa83, #c2915e);
+  background: linear-gradient(#d0aa83, #c2915e);
+  border: 3px solid #ac7841;
+  text-align: center;
+}
+
+.market-item {
+  display: inline-block;
+  text-align: center;
+  height: 150px;
+  width: 100px;
+  margin: 0 10px;
+  margin-bottom: 10px;
+  background-color: #d0aa83;
+  border: 2px solid #d7b795;
+  box-shadow: 1px 2px 3px #ac7841;
+}
+
+.inventory {
+  min-height: 200px;
+  min-width: 1000px;
+  margin: 0 auto;
+  padding: 10px 20px 20px 20px;
+  background: #c7b08d;
+  background: -webkit-linear-gradient(#d8c8af, #c7b08d);
+  background: -o-linear-gradient(#d8c8af, #c7b08d);
+  background: -moz-linear-gradient(#d8c8af, #c7b08d);
+  background: linear-gradient(#d8c8af, #c7b08d);
+  border: 3px solid #b6986b;
+  text-align: center;
+}
+
+.inventory-item {
+  display: inline-block;
+  text-align: center;
+  height: 150px;
+  width: 100px;
+  margin: 0 10px;
+  margin-bottom: 10px;
+  border: 2px solid #e0d4c0;
+  background-color: #d8c8af;
+  box-shadow: 1px 2px 3px #b6986b;
+}
+
+.info-bar {
+  height: 30px;
+  min-width: 1000px;
+  margin: 0 auto;
+  padding-top: 20px;
+  background-color: white;
+  text-align: center;
+}
+
+.info-bar span {
+  margin: 10px 50px;
+}
+
+.gold {
+  transition: box-shadow .1s linear, background-color .1s linear;
+}
+
+.gold:hover {
+  background-color: gold;
+  box-shadow: 0px 0px 10px gold;
+}
+
+.town-action-bar {
+  padding: 10px;
+  border-bottom: 3px solid #ac7841;
+}
+
+.town-action-bar button {
+  margin: 20px;
+}
+
+.fix-ship {
+  margin-right: 50px;
+}
+
+.fix-ship button {
+  margin-right: 10px;
+}
+
+.ship-yard {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-bottom: 3px solid #ac7841;
+}
+
+.ship-for-sale {
+  display: inline-block;
+  margin: 10px;
+}
+
+.ship-for-sale button {
+  margin: 0 auto;
+}
+
+.travel-map-wrapper {
+  position: relative;
+  height: 700px;
+  width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.travel-map {
+  width: 100%;
+}
+
+.destination {
+  position: absolute;
+  background-color: #b0dfb3;
+  color: #235426;
+  border: 1px solid #2a662e;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.destination:hover {
+  background-color: #68c16e;
+  color: #050c05;
+  border: 1px solid #2a662e;
+}
+
+#current-location {
+  background-color: #68a6c1;
+  color: #050a0c;
+  border: 1px solid #2a5466;
+  cursor: default;
+}
+
+#current-location:hover {
+  background-color: #68a6c1;
+  color: #050a0c;
+  border: 1px solid #2a5466;
+}
+
+.sea {
+  position: relative;
+  overflow: hidden;
+  height: 700px;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.sea .action-bar {
+  position: absolute;
+  z-index: 1000;
+  bottom: 150px;
+  left: 50px;
+}
+
+.sea .action-bar button {
+  margin-left: 20px;
+}
+
+.sea-top {
+  position: relative;
+  margin-bottom: -4px;
+}
+
+.sea-bottom {
+  position: relative;
+  z-index: 100;
+}
+
+.ship {
+  z-index: 30;
+  position: absolute;
+  transition: bottom 1s ease-in, transform 1s ease-in;
+}
+
+.ship .smoke {
+  width: 50px;
+  height: 55px;
+  position: absolute;
+  left: 40%;
+  bottom: 0px;
+  transition: opacity 0.4s cubic-bezier(0.3, 75, 0.79, 40) 0.4s, transform 0.4s ease-in 0.4s;
+}
+
+.damage-bar {
+  height: 5px;
+  margin-left: 20%;
+  margin-top: -5px;
+  border: 1px solid black;
+  background-color: white;
+}
+
+.damage-bar div {
+  height: 5px;
+  background-color: green;
+  transition: width 300ms ease-in;
+}
+
+.cannon {
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: black;
+  transition: left 1s linear 500ms, bottom 1s cubic-bezier(0.3, 20, 0.79, 20) 500ms, opacity 10ms linear 1490ms;
+}
+
+.player-ship {
+  left: 50px;
+}
+
+.enemy-ship {
+  left: 600px;
+}
+
+.bottom-mask {
+  z-index: 200;
+  width: 100%;
+  height: 200px;
+  background-color: #e4f0eb;
+}
