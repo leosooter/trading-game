@@ -3,6 +3,20 @@ body {
   background-color: #e4f0eb;
 }
 
+body button {
+  margin: 0 2px;
+  background-color: #8e7255;
+  color: white;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  outline: none;
+}
+
+body button:hover {
+  background-color: #a88c6e;
+  box-shadow: 1px 1px #4e3f2f;
+}
+
 .game-screen {
   text-align: center;
 }
@@ -127,6 +141,7 @@ body {
 
 .destination {
   position: absolute;
+  padding: 0 4px;
   background-color: #b0dfb3;
   color: #235426;
   border: 1px solid #2a662e;

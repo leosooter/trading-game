@@ -2,6 +2,8 @@ $market-color : rgb(194, 145, 94);
 $inventory-color : rgb(199, 176, 141);
 $info-bar-color : rgb(235, 162, 22);
 
+$button-color: rgb(78, 63, 47);
+
 $town-color : rgb(42, 102, 46);
 $current-location-color : rgb(42, 84, 102);
 
@@ -33,6 +35,18 @@ $color-flash-curve2 : cubic-bezier(.3,1,.79,1);
 body{
   padding: 30px;
   background-color: rgb(228, 240, 235);
+  button{
+    margin: 0 2px;
+    background-color: lighten($button-color, 20%);
+    color: white;
+    border: 1px solid darken(white, 20%);
+    border-radius: 8px;
+    outline: none;
+    &:hover{
+      background-color: lighten($button-color, 30%);
+      box-shadow: 1px 1px $button-color;
+    }
+  }
 }
 
 .game-screen{
@@ -143,6 +157,7 @@ body{
 
 .destination{
   position: absolute;
+  padding: 0 4px;
   background-color: lighten($town-color, 50%);
   color: darken($town-color, 5%);
   border: 1px solid $town-color;
